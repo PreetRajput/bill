@@ -1,0 +1,29 @@
+body{
+    background: #d6ecfc;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+.next{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 30px 0px 0px 0px;
+}
+.textPart{
+    margin: 10px 0px 10px 0px;
+    font-size: xx-large;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-family: monospace;
+}
+.inputHere{
+    box-shadow: 3px 3px 3px black;
+    padding: 3px 3px 3px 10px;
+    font-size: xx-large;
+    font-family: monospace;
+}

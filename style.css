@@ -1,0 +1,31 @@
+body{
+    padding: 0px 10px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ff414e;
+    height: 100vh;
+    overflow: hidden;
+}
+.animationDiv{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.next{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 8px;
+}
+.nextBtn{
+    box-shadow: 5px 5px 5px black;
+    font-size: larger;
+    cursor: pointer;
+
+}
+.nextBtn:hover{
+    opacity: 0.7;
+}

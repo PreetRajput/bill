@@ -1,0 +1,53 @@
+body{
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: #DCC7AA;
+    letter-spacing: 1px;
+    font-family: monospace;
+}
+
+button{
+    font-size: x-large;
+    font-family: monospace;
+    background-color: #a3d3f5;
+    padding: 5px;
+}
+
+.whole{
+    display: flex;
+    padding: 5px;
+    height: 100vh;
+    flex-direction: column;
+}
+th, td{
+    border: 2px solid black;
+    padding: 0px 15px 0px 15px;
+    font-size: large;
+}
+
+.totalDiv{
+    margin: 50px 0px 50px 100px;
+    display: flex;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+#totalBox{
+    border: 1px solid black;
+    padding-left: 10px;
+    height: 100%;
+    width: 200px;
+    margin-left: 10px;
+    background-color: white;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+}
