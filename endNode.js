@@ -25,14 +25,34 @@ import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/fireb
   let num= document.getElementById("num");
   let print= document.querySelector(".print");
   let st;
+  let exitBtn= document.querySelector("#exitBtn");
+  let form= document.querySelector(".form");
   let ab= [];
   const abp= ref(db, 'currentUser/')
   const abc= ref(db, 'users/')
   let infoTab= ref(db, "info/")
 
     print.addEventListener('click', ()=>{
+    
     window.print();
+
   })
+
+  exitBtn.addEventListener('click',(event)=>{
+      event.preventDefault();
+      for (let index = 0; index < b.length; index++)
+        {
+         update(ref(db, 'info/' + b[index]),{
+           stock: ab[index]
+         })
+         
+      }
+      form.submit();
+      
+
+  })
+
+
   
   
 function takeVal(params) {
@@ -118,7 +138,7 @@ async function help(params) {
  
 
 }
-  
+
         
 
 
