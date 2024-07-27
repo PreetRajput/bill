@@ -5,13 +5,15 @@ body{
     background-color: #ff414e;
     height: 100vh;
     overflow: hidden;
+    font-family: "Bebas Neue", sans-serif;
 }
 .animationDiv{
     height: 90%;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+
 
 }
 .next{
@@ -45,15 +47,115 @@ body{
 }
 .box{
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     border: 2px solid black;
     box-shadow: black 10px 10px 10px;
     background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: xx-large;
+    
+}
+
+.animate{
     animation-timing-function: ease-out;
     animation-name: slideDown;
-    animation-duration: 5s;
+    animation-duration: 1s;
 }
 
 
 
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    } 
+    25%{
+        transform: rotate(10deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    } 90%{
+        transform: rotate(-10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.rotate{
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.rotateDif{
+    animation-name: rotateDif;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotateDif{
+    0%{
+        transform: rotate(0deg);
+    } 
+    25%{
+        transform: rotate(-10deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    } 90%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes bounce{
+    0%{
+        transform: translateY(0px)
+    } 
+    10%{
+        transform: translateY(5px)
+    }
+    25%{
+        transform: translateY(0px)
+
+    }25%{
+        transform: translateY(-5px)
+
+    }
+    50%{
+        transform: translateY(0px)
+
+    }
+    65%{
+        transform: translateY(5px)
+
+    }
+    95%{
+        transform: translateY(0px)
+    }
+    99%{
+        transform: translateY(-5px)
+
+    }
+    100%{
+        transform: translateY(0px)
+
+    }
+}
+
+.bounce{
+    animation-name: bounce;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
