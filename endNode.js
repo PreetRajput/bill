@@ -15,7 +15,7 @@ import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/fireb
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db= getDatabase();
-  let data, a,b,c, ab;
+  let data, a,b,c;
   let goat= [];
   let sum=0;
   let totalBox= document.querySelector("#totalBox")
@@ -25,6 +25,7 @@ import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/fireb
   let num= document.getElementById("num");
   let print= document.querySelector(".print");
   let st;
+  let ab= [];
   const abp= ref(db, 'currentUser/')
   const abc= ref(db, 'users/')
   let infoTab= ref(db, "info/")
@@ -34,82 +35,94 @@ import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/fireb
   })
   
   
+function takeVal(params) {
+ return new Promise((resolve, reject)=>{
 
-  onValue(abp, (snapshot)=>{
-    data= snapshot.val();
-  })
+    onValue(abp, (snapshot)=>{
+      data= snapshot.val();
+    })
     onValue(abc, (snapshot)=>{
-        let userData= snapshot.val();
-        a = data.User;
-        name.innerText= `Name:  ${userData[a].username}`
-        num.innerText= `Number: ${userData[a].number}`
-        products= userData[a].products;
-         b= Object.keys(products);
-         c= Object.values(products);
-         console.log("asdsad");
-         for (let index = 0; index < b.length; index++) 
-          {
-                                    let newRow= document.createElement("tr");
-                                    let name= document.createElement("td");
-                                    let price= document.createElement("td");
-                                    let quant= document.createElement("td");
-                                    let amt= document.createElement("td");
-                                    name.innerText= b[index];
-                                    quant.innerText= c[index];
-        
-        onValue(infoTab, (snapshot)=>
-          {
-                const info = snapshot.val();
-                let k= Object.keys(info);
-                let p= Object.values(info);
-        
-        
-        
-        
-                            for (let i = 0; i < k.length; i++)
-                            {
-        
-                                            if (k[i]===b[index]) 
-                                              {
-                                            price.innerText= p[i].price;
-                                            st= p[i].stock-1;
-                                            amt.innerText= p[i].price * c[index];
-                                            let v= p[i].price * c[index];
-                                            sum+= v;
-                                            totalBox.innerText= sum;
-                                            console.log()
-                                          }
-                              
-                            }
-                          
-                          update(ref(db, 'users/' + a),{
-                            total: sum,
-                          })
-                  
-              })
-              
+          let userData= snapshot.val();
+          a = data.User;
+          name.innerText= `Name:  ${userData[a].username}`
+          num.innerText= `Number: ${userData[a].number}`
+          products= userData[a].products;
+           b= Object.keys(products);
+           c= Object.values(products);
+           
+           resolve(b);
+          })
+  })
+}
+function writeVal(params) {
+ return new Promise((resolve, reject)=>{
+
+   
+   onValue(infoTab, (snapshot)=>
+    {
+                    for (let index = 0; index < b.length; index++) 
+                      {
+                                                let newRow= document.createElement("tr");
+                                                let name= document.createElement("td");
+                                                let price= document.createElement("td");
+                                                let quant= document.createElement("td");
+                                                let amt= document.createElement("td");
+                                                name.innerText= b[index];
+                                                quant.innerText= c[index];
+                        const info = snapshot.val();
+                        let k= Object.keys(info);
+                        let p= Object.values(info);
                 
-              newRow.appendChild(name)
-              newRow.appendChild(price)
-              newRow.appendChild(quant)
-              newRow.appendChild(amt);
-              table.appendChild(newRow);
-              
-            }
-        })
-    
-      
-const p2= new Promise((resolve, reject)=>{
+                
+                                    for (let i = 0; i < k.length; i++)
+                                    {
+                
+                                                    if (k[i]===b[index]) 
+                                                      {
+                                                    price.innerText= p[i].price;
+                                                    amt.innerText= p[i].price * c[index];
+                                                    let v= p[i].price * c[index];
+                                                    sum+= v;
+                                                    totalBox.innerText= sum;
+                                                    st= info[b[index]].stock - c[index];
+                                                    ab.push(st)
+                                                    console.log("gdg");
+                                                  }
+                                      
+                                    }
+                                  
+                                  update(ref(db, 'users/' + a),{
+                                    total: sum,
+                                  })
+                                  
+                                  newRow.appendChild(name)
+                                  newRow.appendChild(price)
+                                  newRow.appendChild(quant)
+                                  newRow.appendChild(amt);
+                                  table.appendChild(newRow);
+                        }
+                        resolve(ab);
 
-  
-  
-})
-      
+                      })
+                      
+            
         
 
-    
+  })
+}
+
+async function help(params) {
+  const  p1= await takeVal();
+  const p2= await writeVal();
+  console.log(p2);
+ 
+
+}
+  
+        
 
 
+help();
             
         
 
